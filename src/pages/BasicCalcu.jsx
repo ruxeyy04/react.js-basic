@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 
 const BasicCalcu = () => {
-  const [input, setInput] = useState("0");
-
+  const [result, setResult] = useState("");
   const handleClear = () => {
-    setInput("0");
+    setResult("");
   };
-
+  const clickHandler = (event) => {
+    setResult(result.concat(event.target.value));
+  };
+  const calculate = () => {
+    setResult(eval(result).toString())
+  }
   return (
     <>
       <div className="bg-pink-300 h-screen w-full">
@@ -17,17 +21,60 @@ const BasicCalcu = () => {
             <input
               type="text"
               id="answer"
-              value={input}
-              placeholder="0"
+              value={result}
+              placeholder="Basic Calculator"
               className="w-full mb-4 p-2 text-right border border-gray-300 rounded"
               readOnly
             />
             <div className="grid grid-cols-4 gap-2">
-              {["9", "8", "7", "/", "6", "5", "4", "*", "3", "2", "1", "-", "0", "+", "%", "C"].map((char) => (
+              {[
+                "9",
+                "8",
+                "7",
+                "/",
+                "6",
+                "5",
+                "4",
+                "*",
+                "3",
+                "2",
+                "1",
+                "-",
+                "0",
+                ".",
+                "+",
+                "%",
+                
+                "Clear",
+                "=",
+              ].map((char) => (
                 <button
                   key={char}
-                  className={`bg-${char.match(/[0-9]/) ? "gray-200" : char.match(/[C]/) ? "red-500" : "yellow-500" } p-4 rounded text-xl hover:bg-${char.match(/[0-9]/) ? "gray-300" : char.match(/[C]/) ? "red-600" : "yellow-600"} active:bg-${char.match(/[0-9]/) ? "gray-400" : char.match(/[C]/) ? "red-700" : "yellow-700"}`}
-                  onClick={char === "C" ? handleClear : undefined}
+                  value={char}
+                  className={`bg-${
+                    char.match(/[0-9.]/)
+                      ? "gray-200"
+                      : char.match(/[C]/)
+                      ? "red-500"
+                      : "yellow-500"
+                  } p-4 rounded text-xl hover:bg-${
+                    char.match(/[0-9.]/)
+                      ? "gray-300"
+                      : char.match(/[C]/)
+                      ? "red-600"
+                      : "yellow-600"
+                  } active:bg-${
+                    char.match(/[0-9.]/)
+                      ? "gray-400"
+                      : char.match(/[C]/)
+                      ? "red-700"
+                      : "yellow-700"
+                  }
+                ${char.match(/[Clear=]/) ? "col-span-2" : ""}
+                  `}
+                  onClick={
+                    char === "Clear" ? handleClear : char == "=" ? calculate : clickHandler
+                  }
                 >
                   {char}
                 </button>

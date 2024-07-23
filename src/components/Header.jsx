@@ -20,6 +20,9 @@ export default function Header() {
         <Link to="/about">
           <li className={`cursor-pointer ${getLinkStyle("/about")}`}>About</li>
         </Link>
+        <Link to="/calculator">
+          <li className={`cursor-pointer ${getLinkStyle("/calculator")}`}>Calculator</li>
+        </Link>
       </ul>
     </div>
   );

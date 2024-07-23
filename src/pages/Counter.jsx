@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "./Button";
-import Header from "./Header";
+import Button from "../components/Button";
+import Header from "../components/Header";
 
 export default function Counter() {
   return (

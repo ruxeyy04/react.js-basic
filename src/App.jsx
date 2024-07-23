@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
 
-import Counter from "./components/Counter";
-import Home from "./components/Home";
-import About from "./components/About";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Counter from "./pages/Counter";
 import { Routes, Route } from "react-router-dom";
 import Error from "./components/Errorpage";
 export default function App() {
@@ -12,14 +11,14 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/counter" element={<Counter />} />
-        
-        <Route 
-        path="*" 
-        element={
-        <>
-          <Error/>
-          </>
-        } 
+
+        <Route
+          path="*"
+          element={
+            <>
+              <Error />
+            </>
+          }
         />
       </Routes>
     </>

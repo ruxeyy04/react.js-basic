@@ -23,6 +23,9 @@ export default function Header() {
         <Link to="/calculator">
           <li className={`cursor-pointer ${getLinkStyle("/calculator")}`}>Calculator</li>
         </Link>
+        <Link to="/pokeapi">
+          <li className={`cursor-pointer ${getLinkStyle("/pokeapi")}`}>PokeAPI</li>
+        </Link>
       </ul>
     </div>
   );
